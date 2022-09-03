@@ -2,11 +2,7 @@
 
 IMPACT (Intelligent Machine Predicting Accurate Chemical Tensors) is a kernel ridge regression machine learning model for prediction of chemical tensors at the wb97xd | 6-311g(d,p) level of theory. Developed with datasets of molecules from the Cambridge Structural Database, IMPACT takes as an input log files with results of chemical tensors at cheap wb97xd | 3-21G level of theory. Predicted tensors are then scaled using scaling factors derived using the CHESHIRE datasets.
 This project was developed by Krystof Chrappova as part of Msci Chemistry final year project at the University of Bristol.
-![image](https://user-images.githubusercontent.com/76857765/144690608-f0ef11e6-ac4e-4d4a-85a0-7d1a5beeef8a.png)
 
-
-Known limitations:
-Molecular size - any molecule that has more than 80 features created with ACSF representation will raise an error. 
 
 ## Dependencies
 * scikit-learn              0.24.2
@@ -25,3 +21,7 @@ IMPACT works as follows:
 
 ## Retraining
 If you wish to retrain the model you can do so using train_test_IMPACT_C.py / train_test_IMPACT_H.py. Here you need to change the path to high level and low-level calculation results.
+
+
+## Known limitations:
+Molecular size - any molecule that has more than 80 features created with ACSF representation will raise an error. 
