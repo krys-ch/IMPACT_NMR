@@ -1,14 +1,12 @@
 # IMPACT_NMR
 
-# Delta_NMR
-
-Delta NMR is a KRR ML model for prediciton of chemical tensors at the wb97xd | 6-311g(d,p) level of theory. Trained on Dataset 4, Delta NMR takes as an input log files with results of chemical tensors at cheap wb97xd | 3-21G level of theory. This project was developed by Krystof Chrappova as part of Msci final year project.
+IMPACT (Intelligent Machine Predicting Accurate Chemical Tensors) is a kernel ridge regression machine learning model for prediction of chemical tensors at the wb97xd | 6-311g(d,p) level of theory. Developed with datasets of molecules from the Cambridge Structural Database, IMPACT takes as an input log files with results of chemical tensors at cheap wb97xd | 3-21G level of theory. Predicted tensors are then scaled using scaling factors derived using the CHESHIRE datasets.
+This project was developed by Krystof Chrappova as part of Msci Chemistry final year project at the University of Bristol.
 ![image](https://user-images.githubusercontent.com/76857765/144690608-f0ef11e6-ac4e-4d4a-85a0-7d1a5beeef8a.png)
 
 
-Known limitaions:
-1. Molecular size - any molecule that has more than 80 features created with ACSF representation will raise an error
-2. Conjugation - cutoff function is set to 3 Angstrom. This is molecular representation limitation and shifts for conjugated systems will not be accurate.
+Known limitations:
+Molecular size - any molecule that has more than 80 features created with ACSF representation will raise an error. 
 
 ## Dependencies
 * scikit-learn              0.24.2
@@ -19,19 +17,11 @@ Known limitaions:
 * numpy                     1.21.2
 
 ## Usage
-Delta_NMR works as follows:
-1. run Gaussian calculation with wb97xd | 3-21G level of theory and create `.sdf` files from the `.log` files using mol_translator (without scaling the tensors)
-3. create atoms dataframe with calculation results by running make_df.py (adjust path to mol_translator and your sdf caluclations results)
-5. using make_delta_inp.py prepare the input dataframe for the delta ML model.
-6. using delta_predict.py get wb97xd | 6-311g(d,p) level of theory chemical tensors
-
-## Carbon and Proton Tensor Prediciton Error (test errors)
-| Atom | RMSE | MAE | MAXE |
-| :------------- | :-------------: | :-------------: | :-------------: |
-| H | 0.155 | 0.111 | 1.28 |
-| C | 1.48 | 1.09 | 10.8 |
-
+IMPACT works as follows:
+1. Run Gaussian calculation with wb97xd | 3-21G level of theory and create `.sdf` files from the `.log` files using mol_translator without scaling the tensors. Create atoms dataframe of the results using mol translator.
+5. using make_delta_inp.py prepare the input for IMPACT.
+6. using delta_predict_H.py / delta_predict_C.py IMPACT predicts wb97xd | 6-311g(d,p) level of theory chemical tensors that are scaled afterwards in the IMPACT output file.
 
 
 ## Retraining
-Models in `trained_models` were trained on dataset 4 and testes on dataset 3  as shown in the flowchart. If you wish to retrain the model you can do so using tain_test_delta.py. Here you need to change the path to high level and low level claulcation reults (dataframes created with `make_delta_inp.py`)
+If you wish to retrain the model you can do so using train_test_IMPACT_C.py / train_test_IMPACT_H.py. Here you need to change the path to high level and low-level calculation results.
