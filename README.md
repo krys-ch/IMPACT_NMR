@@ -1,7 +1,6 @@
 # IMPACT_NMR
 
 IMPACT (Intelligent Machine Predicting Accurate Chemical Tensors) is a kernel ridge regression machine learning model for prediction of chemical tensors at the wb97xd | 6-311g(d,p) level of theory. Developed with datasets of molecules from the Cambridge Structural Database, IMPACT takes as an input log files with results of chemical tensors at cheap wb97xd | 3-21G level of theory. Predicted tensors are then scaled using scaling factors derived using the CHESHIRE datasets.
-This project was developed by Krystof Chrappova as part of Msci Chemistry final year project at the University of Bristol.
 
 
 ## Dependencies
